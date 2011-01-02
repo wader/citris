@@ -1,0 +1,78 @@
+%define name citris
+%define version @VERSION@
+%define release 1
+%define prefix /usr/local
+
+Summary: Circular Tetris deluxe
+
+Name: %{name}
+Version: %{version}
+Release: %{release}
+Group: Games
+Copyright: GPL
+Requires: SDL SDL_gfx SDL_image SDL_ttf
+
+Source: %{name}-%{version}.tar.gz
+Buildroot: /var/tmp/%{name}-%{version}-%{release}-root
+
+%description
+A circluar Tetris clone using SDL
+
+%prep
+
+%setup
+
+%build
+%ifarch alpha
+  MYARCH_FLAGS="--host=alpha-redhat-linux"
+%endif
+%ifarch i386
+  MYARCH_FLAGS="--host=i386-redhat-linux"
+%endif
+
+if [ ! -f configure ]; then
+CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh --prefix=%{prefix}
+else
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{prefix}
+fi
+
+if [ "$SMP" != "" ]; then
+  (make "MAKE=make -k -j $SMP"; exit 0)
+  make
+else
+  make
+fi
+
+%install
+if [ -d $RPM_BUILD_ROOT ]; then rm -r $RPM_BUILD_ROOT; fi
+mkdir -p $RPM_BUILD_ROOT%{prefix}
+make prefix=$RPM_BUILD_ROOT%{prefix} install
+
+%files
+%defattr(-,root,root)
+%doc AUTHORS COPYING README
+%attr(755,root,root) %{prefix}/bin/citris
+%{prefix}/share/citris/*
+
+
+%clean
+rm -r $RPM_BUILD_ROOT
+
+%changelog
+* Sat Mar 4 2004 Mattias Wadman <mattias@sudac.org>
+- Package all files in citris/
+
+* Sat Jan 3 2004 Mattias Wadman <mattias@sudac.org>
+- Files update
+
+* Fri Dec 28 2003 Mattias Wadman <mattias@sudac.org>
+- Files update
+
+* Fri Dec 26 2003 Mattias Wadman <mattias@sudac.org>
+- Added SDL_image dep
+- Renamed some image files
+- Added on image file
+
+* Mon Nov 10 2003 Mattias From <morphriz@yahoo.com>
+- New SPEC file.
+

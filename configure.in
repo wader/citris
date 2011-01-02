@@ -1,0 +1,63 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.57)
+AC_INIT(citris, 0.1, mattias@sudac.org)
+AM_CONFIG_HEADER([config.h])
+
+AC_CANONICAL_TARGET
+
+AM_INIT_AUTOMAKE(1.7)
+
+ISODATE=`date +%Y-%m-%d`
+AC_SUBST(ISODATE)
+
+# Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+
+# Checks for libraries.
+AM_PATH_SDL(1.2.4, :, AC_MSG_ERROR(Couldn't find SDL > 1.2.4))
+
+# Check for the SDL_gfx
+have_sdlgfx=no
+AC_CHECK_LIB(SDL_gfx, pixelColor, have_sdlgfx=yes)
+if test x$have_sdlgfx = xyes; then
+    LIBS="$LIBS -lSDL_gfx"
+else
+    AC_MSG_ERROR([
+*** Unable to find SDL_gfx library
+])
+fi
+
+# Check for the SDL_image
+have_sdlimage=no
+AC_CHECK_LIB(SDL_image, IMG_Load, have_sdlimage=yes)
+if test x$have_sdlimage = xyes; then
+    LIBS="$LIBS -lSDL_image"
+else
+    AC_MSG_ERROR([
+*** Unable to find SDL_image library
+])
+fi
+
+# Check for the SDL_ttf
+have_sdlimage=no
+AC_CHECK_LIB(SDL_ttf, TTF_OpenFont, have_sdlttf=yes)
+if test x$have_sdlttf = xyes; then
+    LIBS="$LIBS -lSDL_ttf"
+else
+    AC_MSG_ERROR([
+*** Unable to find SDL_ttf library
+])
+fi
+
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_CONFIG_FILES([Makefile citris.spec src/Makefile data/Makefile debian/Makefile])
+AC_OUTPUT

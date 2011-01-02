@@ -1,0 +1,36 @@
+citris - Circular Tetris
+See COPYING for license information
+
+INSTALLING
+
+If CVS checkout, run "sh autogen.sh" first.
+Run "./configure && make && make install" to install to /usr/local.
+Run "dpkg-buildpackage -rfakeroot" to build debian packge.
+
+
+ABOUT
+
+Citris idea of a circular Tetris was not stolen, but after doing some
+research I found out that it has already been done in some similar clones.
+
+Here is a list of the ones I know of:
+
+ct
+Doug Partridge <dpartrid@lawson.appcomp.utas.edu.au>
+http://www.comp.utas.edu.au/students/dpartrid/ct/
+GPL, GTK/GNOME based
+Web page seams to be broken
+
+Ringtris
+Mark Wutka <wutka@netcom.com>
+http://www.town-usa.com/arcade/ringtris/
+Java applet
+
+Revolution
+Sean O'Connor <sean@windowsgames.co.uk>
+http://www.windowsgames.co.uk/revolutn.html
+Commercial, shareware game for Windows
+
+
+$Id: README 912 2005-09-14 21:42:05Z mattias $
+

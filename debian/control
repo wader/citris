@@ -1,0 +1,13 @@
+Source: citris
+Section: games
+Priority: optional
+Maintainer: Mattias Wadman <mattias@sudac.org>
+Standards-Version: 3.6.1
+Build-Depends: libsdl1.2-dev, libsdl-gfx1.2-dev, libsdl-image1.2-dev, libsdl-ttf2.0-dev
+
+Package: citris
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: Circular Tetris
+ A normal Tetris game with one interesting exception, it has a
+ cicular game field.

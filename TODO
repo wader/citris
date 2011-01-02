@@ -1,0 +1,73 @@
+$Id: TODO 951 2006-08-29 12:35:19Z mattias $
+
+debian package does not build anymore, fakeroot seams to chown doc
+dircetory to root:root which dh_installdocs wants to write to... hmm
+
+SDL-ttf 2.0
+
+ESC-key should select first menu item?
+
+Debian: silly pureness, but we should generate two debian packges one with data and one with binary
+If someone has the time, this is probably what needs to be done:
+Add a citris-common packge with "Arch: all"
+Add depend on citris-common to citris package
+Make all non /usr/bin/* files be in citris-common, (special debian/ files?)
+
+Pile height highlight, deep blue...
+
+I think there is a bug that makes shapes some time drop directly, but not sure.. ai does it some times and i have expericened myself when playing
+
+Make submenu for options, option for fullsceeen also maybe?
+Figuare out a nice look for options
+
+PARTIAL DONE, Maybe try to use "delta" updates in gamefield_render (useing a internal surface?)
+Then only render "new" things also, next shape only if tetris->new...
+
+Install instructions, deb, rh, make install
+
+Copyright year
+
+Credit and Help screen?
+
+Find out what is the "standard" color of the shapes (original ms-dos tetris seams to use different colors then we)
+
+PARTIAL DONE, Proportional font to resolution?
+
+Implement "two-pices" strategy into AI, this is low prio but probably not that hard :)
+
+PARTIAL DONE, DATA_DIR=".", Windows port :), fix paths in util.c to be portable ifdef WINDOWS \\ endif
+
+Better scoring system, drop bonus and stuff
+
+PARTIAL DONE (static var in game.c insted), Fix better indication on AI player, new field in tetris struct?
+
+sgid games if we implement a highscore?
+
+PARTIAL DONE, Delay or make a "game over" text until keypress (or timed) when player dies
+
+Create colors.c that inits all color constants used, then call fooColor insted of fooRGBA 
+
+Unclump assertions, makes it possible to see which logic expression that failed
+
+Anti-aliasing on shapes, make it better, seams to get sharp in some angles
+
+DONE, Shape "depth color" at high resolutions
+
+Use fonts, URW Gothic L
+
+NOT NICE, DONE, Next shape rendering, how?
+
+PARTIAL DONE (need to learn how alpha _really works), Menu, use "blobbs" as selection
+
+DONE, Show level, score etc in a better way
+
+PARTIAL DONE, Now we have a background demo, so only left to do is a np-complete tetris A.I
+
+Fix font renderer
+
+Fix variable screen resolutions
+
+Highscores and configuration (i.e. persistant data)
+
+Do an fgrep -r TODO *
+
